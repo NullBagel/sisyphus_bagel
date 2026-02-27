@@ -12,9 +12,9 @@ Thank you for playing my game! Just like the namesake, Sourdough Bagels is the m
 """)
 
 def char_check(user_input, max_digits):
-    while len(user_input) != max_digits:
-        user_input = input("Please input correct number of digits.")
-
+    while len(user_input) != max_digits or not user_input.isdigit():
+        user_input = input(f"Please input {max_digit} digits.")
+        
     return user_input
 
 def get_bagel(max_digits):
@@ -39,17 +39,26 @@ def get_clues(user_input, bagel_number):
 
     return clues
 
+def play_again():
+    while True:
+        print("Play again? Y/N")
+        replay_choice = input().upper()
+        if replay_choice in ("Y", "N"):
+            break
+        else:
+            print("Please only input Y or N")
+
+    return replay_choice
+    
 def bagel_game_core(max_guess):
-    bagel_game_core_input = ""
-
-    while bagel_game_core_input != "N":
+    while True:
         bagel_number = get_bagel(max_digits)
-
+        
         for i in range(max_guess):
             user_input = input("Please input a number:")
             user_input = char_check(user_input, max_digits) #check if entry fits within the defined number of digits
             clues = get_clues(user_input, bagel_number)
-
+            
             if clues is True:
                 print("You win!")
                 break
@@ -58,7 +67,10 @@ def bagel_game_core(max_guess):
                 print(clues)
         else:
             print("Out of guesses :(")
-        bagel_game_core_input = input("Play again? Y/N")
+        replay_choice = play_again()
+        
+        if replay_choice == "N":
+            break
 
 def menu_explanation():
     explanation_input = ""
