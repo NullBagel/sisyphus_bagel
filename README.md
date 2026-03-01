@@ -17,5 +17,5 @@ This is a repo for my side projects as I learn how to code in Python. I hope thi
       - Hard: 7 guesses with 3 digits. Numbers and letters are included  
       - Included letters when checking for improper input in char_check()  
       - Included letters in get_bagel when Hard difficulty is selected  
-    .
-    With the difficulty settings included, I can deem the Sourdough Project as completed
+    
+    With the difficulty settings included, I can deem the Sourdough Project as completed.
