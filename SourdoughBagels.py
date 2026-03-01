@@ -1,12 +1,8 @@
 import random
 
-def settings():
-    max_guess = 10
-    max_digits = 3
-    mode = "Numbers"
-    
+def settings():    
     while True:
-        print("Current difficulty set to Standard.")
+        print(f"Current difficulty set to {difficulty}.")
         print("Select difficulty settings or press X to exit:")
         print("1. Easy (Guesses: 15 | Digits: 2 | Numbers only)")
         print("2. Standard (Guesses: 10 | Digits: 3 | Numbers only)")
@@ -159,7 +155,7 @@ while True:
     menu_choice = input("What would you like to do?")
     
     if menu_choice == "1":
-        bagel_game_core(max_guess)
+        bagel_game_core(max_guess, max_digits, mode)
         
     elif menu_choice == "2":
         menu_explanation()
