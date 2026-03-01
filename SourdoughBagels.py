@@ -1,8 +1,11 @@
 import random
 
 def settings():    
+    max_guess = 10
+    max_digits = 3
+    mode = "Numbers"
     while True:
-        print(f"Current difficulty set to {difficulty}.")
+        print("Current difficulty set to Standard.")
         print("Select difficulty settings or press X to exit:")
         print("1. Easy (Guesses: 15 | Digits: 2 | Numbers only)")
         print("2. Standard (Guesses: 10 | Digits: 3 | Numbers only)")
