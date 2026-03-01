@@ -137,6 +137,7 @@ def menu_quit():
 max_guess = 10
 max_digits = 3
 mode = "Numbers"
+difficulty = "2"
 
 print("""🥯 Sourdough Bagels 🥯
 The Bagels game but with an added kick!
