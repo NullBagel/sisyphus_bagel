@@ -36,7 +36,7 @@ def dealing(MAX_PLAYERS, deck):
     # print(blackjack_table)
     return blackjack_table
 
-def dealt_points(blackjack_table):
+def calculate_initial_points(blackjack_table):
     blackjack_points_dict = {}
     
     for player, cards in blackjack_table.items():
@@ -57,6 +57,28 @@ def dealt_points(blackjack_table):
         blackjack_points_dict[player] = blackjack_points
     return blackjack_points_dict
 
+def count_points(player_hand):
+    player_points = 0
+    aces = 0
+
+    for i in range(len(player_hand)):
+        rank = player_hand[i][:-1]
+
+        if rank == "A":
+            player_points += 11
+            aces += 1
+
+        elif rank in ["J","Q","K"]:
+            player_points += 10
+
+        else:
+            player_points += int(rank)
+
+        while player_points > 21 and aces > 0:
+            player_points -= 10
+
+    return player_points
+
 def dealt_blackjack_check(blackjack_points_table):
     for player, points in blackjack_points_table.items():
         if points == 21:
@@ -67,7 +89,30 @@ def blackjack_game_core(MAX_PLAYERS):
     random.shuffle(deck)
     blackjack_table = dealing(MAX_PLAYERS, deck)
     print(blackjack_table)
-    blackjack_points_table = dealt_points(blackjack_table)
+    blackjack_points_table = calculate_initial_points(blackjack_table)
     dealt_blackjack_check(blackjack_points_table)
+
+    for player in range(len(blackjack_table)-1):
+        player_points = blackjack_points_table[f"Player {player+1}"]
+        cards = blackjack_table[f"Player {player+1}"]
+        print(f"Player {player+1}'s Turn")
+
+        while player_points < 21:
+            print(f"Player {player+1}'s points: {player_points}")
+            player_input = input("Hit? Y/N").upper()
+
+            if player_input == "Y":
+                cards.append(deck[0])
+                deck.pop(0)
+                print(cards)
+                player_points = count_points(cards)
+                print(player_points)
+                blackjack_points_table[f"Player {player+1}"] = player_points
+            
+            elif player_input == "N":
+                break
+
+            else:
+                print("Please only input Y or N")
 
 blackjack_game_core(MAX_PLAYERS)
