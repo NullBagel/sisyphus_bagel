@@ -27,3 +27,9 @@ This is a repo for my side projects as I learn how to code in Python. I hope thi
     - Current code only flows until the first dealing of cards    
     - Included a check function to see if there's any blackjack (21 points) after the first dealing    
   I am still undecided how visible the cards should be to the player (currently, all hands are visible) as there is the standard version and the more Asian, Chinese New Year version where you can only see your cards. I am also trying to get use to writing a markdown file.
+
+### 25/03/2026 ###
+  Managed to find some time to continue my work on my blackjack game. Finally managed to include a bare-bones game play loop of drawing cards and getting Python to calculate and show the score after every draw. Next part  
+    - Updated core game play loop for players ONLY  
+    - Included a point counting function to show points after every hit     
+  Next big change will be to finish up the dealer's game play loop and to include a function to determine the winner. Will also need to include the option to play several rounds and if there's time, to include bets as well.
